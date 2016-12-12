@@ -8,6 +8,8 @@
 </head>
 <body>
 	<form method="POST" action="/CreateEntryServlet">
+	
+		
 		
 		<input type="text" name="bodyText" />
 		<input type="submit" />

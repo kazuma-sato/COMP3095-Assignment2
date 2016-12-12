@@ -12,7 +12,7 @@
 			<% //generate post info here %>
 		</section>
 		<section id="comments">
-
+			<% // loop for all comments go here %>
 		</section>
 	</article>
 	
