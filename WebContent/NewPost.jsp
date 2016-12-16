@@ -7,9 +7,7 @@
 <title>New Post | Blog</title>
 </head>
 <body>
-	<form method="POST" action="/CreateEntryServlet">
-	
-		
+	<form method="POST" action="/NewEntry">
 		
 		<input type="text" name="bodyText" />
 		<input type="submit" />
