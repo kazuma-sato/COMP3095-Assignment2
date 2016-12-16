@@ -5,7 +5,7 @@ import java.util.Date;
 public class Entry {
 	
 	private String bodyText;
-	private String author;
+	private int authorID;
 	private Date date;
 	
 	public String getBodyText(){
@@ -14,11 +14,11 @@ public class Entry {
 	public void setBodyText(String bodyText){
 		this.bodyText = bodyText;
 	}
-	public String getAuthor(){
-		return author;
+	public int getAuthorID(){
+		return authorID;
 	}
-	public void setAuthor(String author){
-		this.author = author;
+	public void setAuthor(int authorID){
+		this.authorID = authorID;
 	}
 	public Date getDate(){
 		return date;

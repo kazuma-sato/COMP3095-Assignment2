@@ -28,6 +28,7 @@ CREATE TABLE posts
 	id int(11) AUTO_INCREMENT, 
 	author_id int(11),
 	date_created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	title varchar(255);
 	content text,
 
 	CONSTRAINT pk_posts PRIMARY KEY (id),
