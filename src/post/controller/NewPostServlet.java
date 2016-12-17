@@ -1,10 +1,6 @@
 package post.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import post.service.NewPostService;;
+import post.service.PostService;;
 
 @WebServlet("/NewPost")
 public class NewPostServlet extends HttpServlet {
@@ -31,7 +27,7 @@ public class NewPostServlet extends HttpServlet {
 		String entryType;
 		String commentParentPost;
 		
-		NewPostService newPostService = new NewPostService();
+		PostService newPostService = new PostService();
 		
 		username = request.getParameter("username");
 		bodyText = request.getParameter("bodyText");

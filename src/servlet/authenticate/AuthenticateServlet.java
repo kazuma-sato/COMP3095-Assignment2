@@ -40,7 +40,6 @@ public class AuthenticateServlet extends HttpServlet {
 		final String DB_USER = "root";
 		final String DB_PASS = "admin";
 		
-		final String secret = "K2vJAdF3hJv4nhD3";
 		
 		boolean authenticationSuccess = false;
 		try {
@@ -89,10 +88,8 @@ public class AuthenticateServlet extends HttpServlet {
 							session.setAttribute(columnName, new String(columnValue));
 						}
 						if(remember) {
-							// I know this isn't good practice
 							Cookie userCookie = new Cookie("username", username);
-							Cookie passCookie = new Cookie(
-									hashWithSecret("password", secret), hashWithSecret(password, secret));
+							Cookie passCookie = new Cookie("password", password);
 							userCookie.setMaxAge(604800);
 							passCookie.setMaxAge(604800);
 							userCookie.setPath("/");
@@ -125,23 +122,5 @@ public class AuthenticateServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	
-    private String hashWithSecret(String value, String secret) {
-    	
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
-            return convertByteArrayToHexString(messageDigest.digest((value + secret).getBytes()));
-        } catch (NoSuchAlgorithmException e) {
-        	e.printStackTrace();
-            return null;
-        }
-    }
-    
-    private static String convertByteArrayToHexString(byte[] arrayBytes) {
-    	
-        StringBuilder stringBuffer = new StringBuilder();
-        for (byte arrayByte : arrayBytes) {
-            stringBuffer.append(Integer.toString((arrayByte & 0xff) + 0x100, 16).substring(1));
-        }
-        return stringBuffer.toString();
-    }
+
 }

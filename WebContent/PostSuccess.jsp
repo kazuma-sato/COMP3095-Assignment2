@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Success</title>
+<title>Post Success</title>
 </head>
 <body>
-<!-- TODO: MAKE PAGE -->>
-Success!
+
 </body>
 </html>

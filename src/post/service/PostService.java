@@ -28,7 +28,8 @@ public class PostService {
 			PreparedStatement prepStatement;
 				
 				prepStatement = conn.prepareStatement(
-						"INSERT INTO `Entry`" +
+						"INSERT INTO" +
+						((isAComment) ? "`comment`" : "`post`") +
 						"(`username`, `body`, `entrytype`, `" +
 						((isAComment) ? "post_id" : "title")
 						+ "`) VALUES (?,?,?,?)");
@@ -58,6 +59,7 @@ public class PostService {
 		}
 		return true;
 	}
+	
 	public Post getPostDetails(String username, String title){
 		
 		int postAuthorID = 0;
@@ -118,5 +120,31 @@ public class PostService {
 			e.printStackTrace();
 		}
 		return post;
+	}
+	
+	public List<Integer> getAllPostIDs(){
+		List<Integer> posts = new ArrayList<Integer>();
+		
+		try {
+			Class.forName(JDBC_Driver);
+			Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+			PreparedStatement prepStatement;
+			ResultSet resultSet;
+
+			prepStatement = conn.prepareStatement("SELECT `id` FROM `posts`");
+			resultSet = prepStatement.executeQuery();
+			
+			while(resultSet.next()){
+				posts.add(resultSet.getInt("id"));
+			}
+			prepStatement.close();
+			resultSet.close();
+			conn.close();
+		} catch(SQLException se) {
+			se.printStackTrace();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return posts;
 	}
 }

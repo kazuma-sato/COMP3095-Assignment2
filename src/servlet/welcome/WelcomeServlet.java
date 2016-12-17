@@ -31,7 +31,14 @@ Description:
 
 @WebServlet("/WelcomeServlet")
 public class WelcomeServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
+	final String secret = "K2vJAdF3hJv4nhD3";
+	final String JDBC_Driver = "com.mysql.jdbc.Driver";
+	final String DB_URL = "jdbc:mysql://localhost:3306/comp3095";
+	final String DB_USER = "root";
+	final String DB_PASS = "admin";
+	final String passwordCookieNameHashed = hashWithSecret("password", secret);
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -65,13 +72,7 @@ public class WelcomeServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	private boolean checkCookies(HttpServletRequest request) {
-		
-		final String secret = "K2vJAdF3hJv4nhD3";
-		final String JDBC_Driver = "com.mysql.jdbc.Driver";
-		final String DB_URL = "jdbc:mysql://localhost:3306/comp3095";
-		final String DB_USER = "root";
-		final String DB_PASS = "";
-		final String passwordCookieNameHashed = hashWithSecret("password", secret);
+
 		String username = "";
 		String passwordCookieValueHashed = "";
 		boolean cookieIsValid = false;
@@ -116,11 +117,7 @@ public class WelcomeServlet extends HttpServlet {
 	}
 	
 	private void startSession(HttpServletRequest request){
-		
-		final String JDBC_Driver = "com.mysql.jdbc.Driver";
-		final String DB_URL = "jdbc:mysql://localhost:3306/comp3095";
-		final String DB_USER = "root";
-		final String DB_PASS = "";
+
 		String username = "";
 		
 		Cookie[] cookies = request.getCookies();
