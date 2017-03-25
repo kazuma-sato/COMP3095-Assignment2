@@ -1,5 +1,10 @@
 package post.service;
-
+/*
+ * COMP3095 Project
+ * Kazuma Sato 100 948 212
+ * Mark Wheeler-Gallant 100 800 311
+ * 
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

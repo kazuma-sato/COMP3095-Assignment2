@@ -1,5 +1,10 @@
 package post.service;
-
+/*
+ * COMP3095 Project
+ * Kazuma Sato 100 948 212
+ * Mark Wheeler-Gallant 100 800 311
+ * 
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -62,6 +67,7 @@ public class PostService {
 	
 	public Post getPostDetails(String username, String title){
 		
+		UserService userService = new UserService();
 		int postAuthorID = 0;
 		Post post = new Post();
 		List<Comment> comments = new ArrayList<Comment>();
@@ -91,8 +97,7 @@ public class PostService {
 			while(postResultSet.next()){
 				
 				post = new Post();
-				postAuthorID = postResultSet.getInt("author_id");
-				post.setAuthor(postAuthorID);
+				post.setAuthor(userService.getUserDetails(postResultSet.getInt("author_id")));
 				post.setBodyText(postResultSet.getString("content"));
 				post.setDate(postResultSet.getDate("date_created"));
 				post.setTitle("title");
@@ -103,7 +108,7 @@ public class PostService {
 			
 			while(commentResultSet.next()){
 				Comment comment = new Comment();
-				comment.setAuthor(commentResultSet.getInt("author_id"));
+				comment.setAuthor(userService.getUserDetails(commentResultSet.getInt("author_id")));
 				comment.setBodyText(commentResultSet.getString("content"));
 				comment.setDate(commentResultSet.getDate("date_created"));
 				comment.setParentPostID(postAuthorID);

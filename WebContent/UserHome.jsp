@@ -40,6 +40,5 @@
 				</c:forEach>
 			</article>
 		</c:forEach>
-
 </body>
 </html>
